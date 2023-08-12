@@ -27,7 +27,7 @@ class TestPlantEntity {
 
     @After
     fun tearDown(){
-        //después aprenderé a hacer esto
+
     }
 
     @Test

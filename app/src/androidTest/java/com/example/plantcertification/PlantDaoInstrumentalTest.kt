@@ -32,18 +32,14 @@ import kotlin.jvm.Throws
 
 
 @RunWith(AndroidJUnit4::class)
-//@Config(sdk=[Build.VERSION_CODES.Q], manifest= Config.NONE)
 class PlantDaoInstrumentalTest {
 
-    //la regla dice que haremos las pruebas en el hilo principal
     @get:Rule val instantTaskExecutorRule= InstantTaskExecutorRule()
 
-    //private lateinit var plantDao: PlantDao
     private lateinit var db: PlantDataBase
 
     @Before
     fun setupDB() {
-        //setteamos la base de datos antes del test
         db= Room.inMemoryDatabaseBuilder(ApplicationProvider.getApplicationContext(),
             PlantDataBase::class.java).build()
     }
@@ -51,32 +47,24 @@ class PlantDaoInstrumentalTest {
     @After
     @Throws(IOException::class)
     fun shutDown(){
-        //despues del test apagamos la base de datos
         db.close()
     }
 
     @Test
     @Throws(Exception::class)
     fun coroutineDBInsertPlant(){
-        //primer test instanciamos el dao
-
         val plantDao= db.getPlantDao()
-
-        //creamos 2 plant entity
 
         val plant1= PlantEntity(1,"pruena","tipo1","prueba imagen", "image1")
         val plant2= PlantEntity(2,"prueba 2","tipo2","prueba imagen 2", "imagen2")
         val plants= listOf(plant1,plant2)
 
-        //en la coroutine
 
         runBlocking(Dispatchers.Default) {
-            //insertamos plant 1 y2(plants)
             plantDao.insertAllPlants(plants)
         }
 
         plantDao.getAllPlants().observeForever{
-            //observamos el livedata y comprobamos que su tamaño sea 2
             assertThat(plants.size, equalTo(2))
         }
 
@@ -92,7 +80,6 @@ class PlantDaoInstrumentalTest {
     @Test
     @Throws(Exception::class)
     fun insertPlantDetail() {
-        //acá probaremos la otra funcion del dao
         val plantDao = db.getPlantDao()
 
         val plantDetail = PlantDetailEntity(
@@ -103,7 +90,6 @@ class PlantDaoInstrumentalTest {
             "descripcion2"
         )
 
-        //variable para manejar coroutine en ambiente de prueba
         val testDispatcher = TestCoroutineDispatcher()
         Dispatchers.setMain(testDispatcher)
 
@@ -121,7 +107,6 @@ class PlantDaoInstrumentalTest {
 
     }
 
-    //funcion auxiliar obtiene o espera valor de un livedata
     fun <T> LiveData<T>.getOrAwaitValue(
         time: Long = 2,
         timeUnit: TimeUnit = TimeUnit.SECONDS,
@@ -129,7 +114,7 @@ class PlantDaoInstrumentalTest {
     ): T {
         var data: T? = null
         val latch = CountDownLatch(1)
-        //el observer captura el valor del livedata
+
         val observer = object : Observer<T> {
             override fun onChanged(o: T) {
                 data = o
@@ -141,7 +126,6 @@ class PlantDaoInstrumentalTest {
 
         afterObserve.invoke()
 
-        // Si no se obtiene el valor en el tiempo esperado lanza una excepcion
         if (!latch.await(time, timeUnit)) {
             this.removeObserver(observer)
             throw TimeoutException("El valor del LiveData no se obtuvo en el tiempo esperado.")
