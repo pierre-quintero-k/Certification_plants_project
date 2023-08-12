@@ -40,12 +40,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"></LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:background="@color/lightprimarycolor"
                     android:orientation="vertical"
                     android:padding="16dp">
@@ -54,7 +49,7 @@
                         android:id="@+id/id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:fontFamily="serif"
                         android:text="@string/id"
                         android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +60,7 @@
                         android:id="@+id/nombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:fontFamily="serif"
                         android:text="@string/Name"
                         android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +71,7 @@
                         android:id="@+id/tipo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:fontFamily="serif"
                         android:text="@string/Tipo"
                         android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +88,7 @@
                         android:id="@+id/descripcion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:fontFamily="serif"
                         android:text="@string/Description"
                         android:textSize="24sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +116,7 @@
                         android:textSize="16sp"
                         app:icon="@drawable/baseline_arrow_back_24"
                         app:iconSize="20dp"
+                        app:iconTint="@color/primarytext"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -139,7 +135,7 @@
                         android:textSize="16sp"
                         app:backgroundTint="@color/yellow"
                         app:icon="@drawable/baseline_mail_outline_24"
-                        app:iconTint="@color/texticons" />
+                        app:iconTint="@color/primarytext" />
                 </LinearLayout>
 
             </LinearLayout>
