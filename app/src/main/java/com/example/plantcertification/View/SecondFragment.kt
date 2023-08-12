@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -29,7 +31,7 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        (activity as AppCompatActivity).supportActionBar?.hide()
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -53,10 +55,9 @@ class SecondFragment : Fragment() {
         viewModel.getPlantDetail().observe(viewLifecycleOwner, Observer {
 
             Glide.with(binding.imageView2).load(it.imagen).into(binding.imageView2)
-            binding.id.text = "ID Planta         : " + it.id
-            binding.nombre.text = "Nombre Planta   : " + it.nombre
-            binding.tipo.text = "Tipo                   : " + it.tipo
-            binding.descripcion.text = "Descripción          : " + it.descripcion
+            binding.nombre.text = it.nombre
+            binding.tipo.text = it.tipo
+            binding.descripcion.text = it.descripcion
 
 
             // Declaracion de variables para enviar correo
@@ -70,15 +71,16 @@ class SecondFragment : Fragment() {
                 intent.data = Uri.parse("mailto")
                 intent.type = "text/plain"
 
-                intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("info@novaera.cl"))
+                intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("luci@plantapp.cl"))
                 intent.putExtra(
                     Intent.EXTRA_SUBJECT,
-                    "Consulta " + name + "id" + code
+                    "Consulta por Producto " + name
                 )
                 intent.putExtra(
                     Intent.EXTRA_TEXT, "Hola\n" +
-                            "Vi la Planta " + name + " de código: " + code + ",\n" +
-                            "Me gustaría Comprarla , por favor contacteme a este correo o al siguiente número:___________\n" +
+                            "Vi el producto " + name + " de código: " + code + ",\n" +
+                            "y me gustaría que me contactaran a este correo o al\n" +
+                            "siguiente número\n" +
                             "Quedo atento"
                 )
                 startActivity(intent)

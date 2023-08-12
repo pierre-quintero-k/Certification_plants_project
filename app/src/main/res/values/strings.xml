@@ -12,5 +12,6 @@
     <string name="Description">Descripcion</string>
     <string name="volver">Volver al Listado</string>
     <string name="enviarcorreo">Enviar Correo Electrónico</string>
-    <string name="nada">nada</string>
+    <string name="image_plant">Image plant</string>
+    <string name="title_app">El Mundo de las Plantas</string>
 </resources>
