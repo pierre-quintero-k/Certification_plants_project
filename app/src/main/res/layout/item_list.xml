@@ -38,24 +38,24 @@
                 <!-- Title, secondary and supporting text -->
                 <TextView
                     android:id="@+id/tv1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="tv1"
+                    android:gravity="center"
                     android:textAppearance="?attr/textAppearanceTitleMedium" />
 
                 <TextView
                     android:id="@+id/tv2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_marginTop="8dp"
                     android:text="tv2"
                     android:textAppearance="?attr/textAppearanceBodyMedium"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="24sp" />
+                    android:textSize="26sp" />
 
             </LinearLayout>
-
-            <!-- Buttons -->
 
         </LinearLayout>
 
