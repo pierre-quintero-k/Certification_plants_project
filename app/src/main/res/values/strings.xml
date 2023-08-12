@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Plant Certification</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="cerrar">Cerrar Aplicación</string>
+    <string name="Titulo1frag">Plantas</string>
+    <string name="id">id</string>
+    <string name="Name">Nombre</string>
+    <string name="Tipo">Tipo</string>
+    <string name="Description">Descripcion</string>
+    <string name="Lastprice">Last price</string>
+    <string name="credit">Credit</string>
+    <string name="volver">Volver al Listado</string>
+    <string name="enviarcorreo">Enviar Correo Electrónico</string>
+    <string name="nada">nada</string>
+</resources>
